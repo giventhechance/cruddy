@@ -1,0 +1,28 @@
+{% extends 'main/show_products.html' %}
+
+{% block content %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <p><label for="title">Название: </label><input type="text" name="title" value="{{ product.title }}"></p>
+        <p><label for="description">Описание: </label><textarea name="description" cols="30" rows="10">{{ product.description }}</textarea></p>
+        <p><label for="price">Цена: </label><input type="number" name="price" value="{{ product.price }}"></p>
+
+        <p><label for="category">Категория: <input type="radio" name="category" value="{{ category.title }}"></label>
+            {% for category in categories %}
+                <li><input type="radio" name="category" value="{{ category.id }}"
+                        {% if category.id == product.category_id %} checked {% endif %}>{{ category.title }}</li>
+            {% endfor %}
+        </p>
+        <p><label for="shop">Магазины: </label>
+            {% for shop in shops %}
+                <li><input type="checkbox" name="shop" value="{{ shop.id }}"
+                           {% if shop in product.shops.all %} checked {% endif %}>
+                    {{ shop.title }}
+                </li>
+            {% endfor %}
+        </p>
+        <p>
+            <button>Сохранить</button>
+        </p>
+    </form>
+{% endblock %}

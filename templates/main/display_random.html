@@ -1,0 +1,14 @@
+{% extends 'main/show_products.html' %}
+
+{% block content %}
+    <h2 align="center">Эта информация исчезнет, как только вы покинете страницу:</h2>
+
+    <div style="width: 300px; height: 300px; margin-left: auto; margin-right: auto;">
+        <p><b>{{ random_content.title }}</b></p>
+        <p>{{ random_content.content }}</p>
+        <br>
+        <p>К сожалению, я не придумала другого использования класса Form в текущих условиях...</p>
+        <button><a href="{% url 'main:show_products' %}" style="text-decoration: none">Забыть обо всём</a></button>
+    </div>
+
+{% endblock %}

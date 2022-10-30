@@ -1,0 +1,10 @@
+{% extends 'main/show_products.html' %}
+
+{% block content %}
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ product_form.as_p }}
+    <button>Сохранить</button>
+    </form>
+{% endblock %}

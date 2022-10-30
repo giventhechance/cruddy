@@ -1,0 +1,13 @@
+{% extends 'main/show_products.html' %}
+{% block content %}
+<form action="" method="POST">
+    {% csrf_token %}
+{#    <p><label for="title">Название: </label><input type="text" name="title"></p>#}
+{#    <p><label for="description">Описание: </label><input type="textarea" name="description"></p>#}
+{#    <p><label for="price">Цена: </label><input type="number" name="price"></p>#}
+    {{ form.as_p }}
+
+
+    <button>Добавить</button>
+</form>
+{% endblock %}

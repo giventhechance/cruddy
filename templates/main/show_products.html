@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<body>
+{% block nav %}
+    <nav style="width: 80%; border: 1px solid black;">
+        <ul style="cursor: pointer; list-style: none; display: flex;">
+            <li style="padding-right: 50px"><a href="{% url 'main:show_products' %}" style="text-decoration: none;">Все
+                продукты</a></li>
+            <li style="padding-right: 50px"><a href="{% url 'main:add_product_input' %}" style="text-decoration: none;">Добавить
+                (input)</a></li>
+            <li style="padding-right: 50px"><a href="{% url 'main:add_product_modelform' %}"
+                                               style="text-decoration: none;">Добавить (ModelForm)</a></li>
+            <li style="padding-right: 50px"><a href="{% url 'main:add_form' %}"
+                                               style="text-decoration: none;">Добавить хз что (Form)</a></li>
+
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <main style="display: flex; flex-wrap: wrap; width: 80%;">
+        {% for product in products %}
+            <div style="border: 1px solid black; margin: 10px; padding: 10px; width: 250px; height: 250px;">
+                <p><a href="{% url 'main:product_detail' product.id %}" style="text-decoration: none; color: black;">
+                    <b>Название: </b>{{ product.title }}</a>
+                </p>
+                <p><b>Цена: </b>{{ product.price }}</p>
+            </div>
+        {% endfor %}
+    </main>
+{% endblock %}
+</body>
+</html>

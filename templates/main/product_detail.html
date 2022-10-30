@@ -1,0 +1,25 @@
+{% extends 'main/show_products.html' %}
+
+{% block content %}
+    <main style="display: flex; align-self: center;">
+        <div style="border: 1px solid black; margin: 10px; padding: 10px; width: 350px; height: 350px;">
+            <p><b>Название: </b>{{ product.title }}</p>
+            <p><b>Описание: </b>{{ product.description }}</p>
+            <p><b>Цена: </b>{{ product.price }}</p>
+            <p><b>Категория: </b>{{ product.category }}</p>
+
+            <p><b>Магазин: </b>
+                {% for shop in product.shops.all %}
+                    {{ shop.title }};
+                {% endfor %}
+            </p>
+
+                <p><button><a href="{% url 'main:product_update' product.id %}"
+                           style="text-decoration: none">Редактировать (i)</a></button></p>
+                <p><button><a href="{% url 'main:product_update_modelform' product.id %}"
+                           style="text-decoration: none">Редактировать (mf)</a></button></p>
+                <p><button><a href="{% url 'main:product_delete' product.id %}"
+                           style="text-decoration: none">Удалить</a></button></p>
+        </div>
+    </main>
+{% endblock %}

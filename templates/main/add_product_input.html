@@ -1,0 +1,26 @@
+{% extends 'main/show_products.html' %}
+
+
+
+{% block content %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <p><label for="title">Название: </label><input type="text" name="title"></p>
+    <p><label for="description">Описание: </label><textarea name="description" cols="30" rows="10"></textarea></p>
+    <p><label for="price">Цена: </label><input type="number" name="price"></p>
+
+    <p><label for="category">Категория: </label>
+        {% for category in categories %}
+            <li><input type="radio" name="category" value="{{ category.id }}">{{ category.title }}</li>
+        {% endfor %}
+    </p>
+    <p><label for="shop">Магазины: </label>
+        {% for shop in shops %}
+            <li><input type="checkbox" name="shop" value="{{ shop.id }}">{{ shop.title }}</li>
+        {% endfor %}
+    </p>
+    <p>
+        <button>Добавить</button>
+    </p>
+</form>
+{% endblock %}
